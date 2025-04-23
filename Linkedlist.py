@@ -17,6 +17,23 @@ class LinkedList:
                 current = current.next  # Traverse to the end
             current.next = new_node  # Link new node at the end
 
+    def delete(self, data):
+        current = self.head
+        prev = None
+
+        while current:
+            if current.data == data:
+                if prev is None:
+                    self.head = current.next  # Delete the head node
+                else:
+                    prev.next = current.next  # Bypass the current node
+                print(f"Deleted {data}")
+                return
+            prev = current
+            current = current.next
+
+        print(f"{data} not found in the list.")        
+
    
 
     def display(self):
@@ -30,6 +47,8 @@ class LinkedList:
 ll = LinkedList()
 ll.add(10)
 ll.add(20)
+ll.display()
+ll.delete(20)
 ll.display()
 ll.add(30)
 ll.display()  
